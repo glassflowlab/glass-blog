@@ -1,13 +1,18 @@
 {
-  "hosting": {
-    "glass-blog": {
+  "hosting": [
+    {
       "site": "glass-blog",
       "public": ".",
       "ignore": [
-        "firebase.json", ".firebaserc", ".git", ".gitignore",
-        "**/.DS_Store", "**/._*", "**/*.txt"
+        "firebase.json",
+        ".firebaserc",
+        ".git",
+        ".gitignore",
+        "**/.DS_Store",
+        "**/._*",
+        "**/*.txt"
       ],
       "cleanUrls": true
     }
-  }
+  ]
 }
