@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9月・柚子季 — 玻璃小店</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* === Poster / Marketing Card 重置（社群行銷用）=== */
+  body { background: #fff; }
+  .poster {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .poster-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .poster-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .poster-cover-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: #d97706;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .poster-body {
+    padding: 40px 28px 56px;
+  }
+  
+  .poster-emoji {
+    font-size: 56px;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  
+  .poster-month {
+    font-size: 14px;
+    color: #d97706;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  
+  .poster h1 {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: #2c2620;
+    letter-spacing: 2px;
+  }
+  
+  .poster-hook {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #2c2620;
+    margin: 0 0 32px;
+    padding: 20px 0;
+    border-top: 1px solid #e8dfd3;
+    border-bottom: 1px solid #e8dfd3;
+    font-weight: 500;
+  }
+  .poster-hook strong {
+    color: #d97706;
+  }
+  
+  .poster-section-title {
+    font-size: 13px;
+    color: #6b5e54;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin: 36px 0 16px;
+  }
+  
+  /* === Bottle Cards (視覺焦點) === */
+  .bottles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 0 0 16px;
+  }
+  .bottle-tile {
+    background: #faf6f0;
+    border: 1px solid #e8dfd3;
+    border-radius: 8px;
+    padding: 20px 18px;
+    transition: all 0.2s;
+  }
+  .bottle-tile:hover {
+    background: #fff3e0;
+    border-color: #d97706;
+    transform: translateY(-2px);
+  }
+  .bottle-tile-tag {
+    display: inline-block;
+    background: #fff3e0;
+    color: #d97706;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .bottle-tile-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2c2620;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .bottle-tile-purpose {
+    font-size: 13px;
+    color: #6b5e54;
+    line-height: 1.5;
+  }
+  
+  /* === Inspiration (3 個簡短) === */
+  .inspirations {
+    display: flex;
+    gap: 12px;
+    margin: 0 0 16px;
+  }
+  .insp-tile {
+    flex: 1;
+    background: #faf6f0;
+    border-radius: 8px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .insp-tile-emoji { font-size: 24px; margin-bottom: 4px; }
+  .insp-tile-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2c2620;
+    line-height: 1.4;
+  }
+  
+  /* === CTA === */
+  .poster-cta {
+    margin-top: 36px;
+    padding: 28px 24px;
+    background: #2c2620;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+  }
+  .poster-cta-text {
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    color: white;
+  }
+  .poster-cta-text strong {
+    color: #f59e0b;
+  }
+  .poster-cta-btn {
+    display: inline-block;
+    background: #d97706;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: background 0.15s;
+  }
+  .poster-cta-btn:hover {
+    background: #b45309;
+  }
+  
+  /* 額外：導出友善的小字 */
+  .poster-footnote {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+  }
+
+  /* === Recipes === */
+  .recipe {
+    background: #faf6f0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-left: 4px solid #d97706;
+  }
+  .recipe-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .recipe-emoji { font-size: 24px; }
+  .recipe-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2c2620;
+    flex: 1;
+  }
+  .recipe-time {
+    font-size: 12px;
+    color: #d97706;
+    background: #fff3e0;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .recipe-steps {
+    margin: 0 0 14px;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .recipe-steps li {
+    position: relative;
+    padding: 6px 0 6px 32px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2c2620;
+    counter-increment: step;
+  }
+  .recipe-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 22px;
+    height: 22px;
+    background: #d97706;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .recipe-bottle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed #e8dfd3;
+    font-size: 13px;
+  }
+  .recipe-bottle-label {
+    color: #6b5e54;
+    font-weight: 600;
+  }
+  .recipe-bottle-name {
+    color: #d97706;
+    font-weight: 700;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <div class="poster-cover">
+    <img src="images/square.jpg" alt="9月柚子">
+    <div class="poster-cover-tag">9月精選</div>
+  </div>
+
+  <div class="poster-body">
+
+    <div class="poster-emoji">🍊</div>
+    <div class="poster-month">2026 / 09 ・ 每月一物</div>
+    
+    <h1>柚子季到了</h1>
+    
+    <p class="poster-hook">
+      文旦柚正盛產。<br>
+      想做 <strong>糖漬柚皮</strong>、<strong>柚子茶</strong>、<strong>柚子醬</strong>？<br>
+      這幾款瓶子，是客戶最常拿來裝這些的。
+    </p>
+
+    <div class="poster-section-title">本月推薦瓶款</div>
+    <div class="bottles-grid">
+      <div class="bottle-tile">
+        <div class="bottle-tile-tag">柚子果醬首選</div>
+        <div class="bottle-tile-name">300 歐式果醬瓶</div>
+        <div class="bottle-tile-purpose">寬口好挖，柚子果醬、柚子茶主力款</div>
+      </div>
+      <div class="bottle-tile">
+        <div class="bottle-tile-tag">送禮精選</div>
+        <div class="bottle-tile-name">150 手把果醬瓶</div>
+        <div class="bottle-tile-purpose">小手把可愛，份量剛好</div>
+      </div>
+      <div class="bottle-tile">
+        <div class="bottle-tile-tag">糖漬柚皮</div>
+        <div class="bottle-tile-name">100 橢圓果醬瓶</div>
+        <div class="bottle-tile-purpose">橢圓優雅，視覺系首選</div>
+      </div>
+      <div class="bottle-tile">
+        <div class="bottle-tile-tag">柚子酒</div>
+        <div class="bottle-tile-name">300 透明梅酒瓶</div>
+        <div class="bottle-tile-purpose">我們最熱銷款，1,432 次交易</div>
+      </div>
+    </div>
+
+    <div class="poster-section-title">想做什麼？</div>
+    <div class="inspirations">
+      <div class="insp-tile">
+        <div class="insp-tile-emoji">🍊</div>
+        <div class="insp-tile-name">糖漬柚皮</div>
+      </div>
+      <div class="insp-tile">
+        <div class="insp-tile-emoji">🍵</div>
+        <div class="insp-tile-name">柚子茶</div>
+      </div>
+      <div class="insp-tile">
+        <div class="insp-tile-emoji">🍞</div>
+        <div class="insp-tile-name">柚子抹醬</div>
+      </div>
+    </div>
+
+    
+    <div class="poster-section-title">怎麼做？</div>
+    
+    <div class="recipe">
+      <div class="recipe-header">
+        <span class="recipe-emoji">🍊</span>
+        <span class="recipe-name">糖漬柚皮</span>
+        <span class="recipe-time">約 1 小時</span>
+      </div>
+      <ol class="recipe-steps">
+        <li>柚皮刨絲（只要黃色，不要白色部分）</li>
+        <li>用鹽抓 30 分鐘，殺青去苦</li>
+        <li>汆燙 2 次（每次 5 分鐘，中間換水）</li>
+        <li>加冰糖小火熬煮 30 分鐘</li>
+        <li>放涼入瓶冷藏</li>
+      </ol>
+      <div class="recipe-bottle">
+        <span class="recipe-bottle-label">建議瓶款</span>
+        <span class="recipe-bottle-name">100 橢圓果醬瓶</span>
+      </div>
+    </div>
+
+    <div class="recipe">
+      <div class="recipe-header">
+        <span class="recipe-emoji">🍵</span>
+        <span class="recipe-name">柚子茶</span>
+        <span class="recipe-time">約 1.5 小時</span>
+      </div>
+      <ol class="recipe-steps">
+        <li>柚肉撕小塊，柚皮刨細絲</li>
+        <li>加冰糖靜置 1 小時讓果肉出水</li>
+        <li>小火熬煮 40 分鐘（需不停攪拌）</li>
+        <li>加少許檸檬汁收尾（保色 + 提味）</li>
+        <li>入瓶倒扣放涼，冷藏 3 個月</li>
+      </ol>
+      <div class="recipe-bottle">
+        <span class="recipe-bottle-label">建議瓶款</span>
+        <span class="recipe-bottle-name">300 歐式果醬瓶</span>
+      </div>
+    </div>
+
+    <div class="recipe">
+      <div class="recipe-header">
+        <span class="recipe-emoji">🍞</span>
+        <span class="recipe-name">柚子抹醬</span>
+        <span class="recipe-time">約 50 分鐘</span>
+      </div>
+      <ol class="recipe-steps">
+        <li>柚肉去籽撕小塊</li>
+        <li>加糖 + 檸檬汁，小火熬煮</li>
+        <li>熬到果膠釋出、質地濃稠</li>
+        <li>裝入消毒後的玻璃瓶</li>
+        <li>倒扣放涼（確保密封），冷藏 2 個月</li>
+      </ol>
+      <div class="recipe-bottle">
+        <span class="recipe-bottle-label">建議瓶款</span>
+        <span class="recipe-bottle-name">150 手把果醬瓶</span>
+      </div>
+    </div>
+
+    <div class="poster-cta">
+      <p class="poster-cta-text">
+        想做柚子產品，<strong>需要瓶子</strong>？<br>
+        跟我們聊聊你想做什麼，
+        我們幫你挑最適合的瓶款。
+      </p>
+      <a href="#" class="poster-cta-btn">查看瓶款 →</a>
+    </div>
+
+    <div class="poster-footnote">
+      玻璃小店 ・ 每月一物 ・ 第 1 期
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
